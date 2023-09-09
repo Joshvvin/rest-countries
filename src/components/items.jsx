@@ -1,48 +1,67 @@
-import React, { useEffect, useState } from 'react'
-import './items.css'
-import CountryCard from './countrycard';
-function Items(props){
-    const { region, search } = props; 
-    const url = 'https://restcountries.com/v3.1/all';
-    const [data, setData] = useState([])
-    useEffect(() =>{
-        fetch(url)
-            .then(res => res.json())
-            .then((response)=>{
-                // console.log(response);
-                // console.log(name, region, population, capital);
-                setData(response);
-            })
-        // console.log(data);           
-    }, [])
-
-    return (
-        <div className="items-container">
-            {/* {region == 'world' ? } */}
-            { region == 'world' ? ( search == 'query' ? data.map((item) =>{
-                    // console.log(item);
-                    return (<CountryCard name={item.name.common} population={item.population} region={item.region} capital={item.capital} flags={item.flags}/>);
-                })
-                : data.filter(country =>{
-                    return country.name.includes(search);
-                }).map((item) =>{
-                    // console.log(item);
-                    return (<CountryCard name={item.name.common} population={item.population} region={item.region} capital={item.capital} flags={item.flags}/>);
-                }))
-                :   (search == 'query' ? data.filter(country =>{
-                    return country.region == region;
-                }).map((item) =>{
-                    // console.log(item);
-                    return (<CountryCard name={item.name.common} population={item.population} region={item.region} capital={item.capital} flags={item.flags}/>);
-                })
-                :   data.filter(country =>{
-                    return country.region == region && country.name.includes(search);
-                }).map((item) =>{
-                    // console.log(item);
-                    return (<CountryCard name={item.name.common} population={item.population} region={item.region} capital={item.capital} flags={item.flags}/>);
-                }))
+import React, { useEffect, useState } from "react";
+import "./items.css";
+import CountryCard from "./countrycard";
+function Items(props) {
+  const { region, search, subregion, setSubRegion, data, setData } = props;
+  const url = "https://restcountries.com/v3.1/all";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  // console.log(region);
+  // const subregions = {};
+  useEffect(() => {
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) {
+          throw error("failed to fetch data");
+        } else {
+          return res.json();
+        }
+      })
+      .then((response) => {
+        setData(response);
+        setLoading(false);
+        // console.log(subregions);
+      })
+      .catch((error) => {
+        setError(true);
+      });
+  }, []);
+  // console.log(subregion);
+  return (
+    <div className="items-container">
+      {error ? (
+        <div className="loadingOrFailed">Failed to fetch data</div>
+      ) : loading ? (
+        <div className="loadingOrFailed">Loading...</div>
+      ) : (
+        data
+          .filter((country) => {
+            return region != "" ? country.region == region : true;
+          })
+          .filter((country) => {
+            if (region != "") {
+              // console.log(subregion);
             }
-        </div>
-    )    
+            return subregion != "" ? country.subregion == subregion : true;
+          })
+          .filter((country) => {
+            return search != ""
+              ? country.name.common.toLowerCase().includes(search)
+              : true;
+          })
+          .map((country) => {
+            return (
+              <CountryCard
+                name={country.name.common}
+                population={country.population}
+                region={country.region}
+                capital={country.capital}
+                flags={country.flags}
+              />
+            );
+          })
+      )}
+    </div>
+  );
 }
 export default Items;

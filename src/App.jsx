@@ -5,11 +5,12 @@ import Header from './components/header.jsx'
 import Content from './components/content.jsx'
 function App() {
   return (
-    <body>
+    // <body>
+    <>
       <Header />
       <Content />
-    </body>
+    </>
+    // </body>
   )
 }
-
 export default App

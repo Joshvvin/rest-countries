@@ -1,12 +1,14 @@
 .country{
     flex-basis: 20%;
-    height: 45%;
-    border: 1px solid black;
+    height: 46%;
+    /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 5px;
     background-color: white;
+    box-shadow: 0px 1px 5px hsl(0, 0%, 52%);
+
 }
 .country-image{
     flex-basis: 100%;
@@ -18,7 +20,7 @@
     width: 100%;
 }
 .country-details{
-    flex-basis: 85%;
+    flex-basis: 80%;
     height: 40%;
     /* border: 1px solid black; */
     display: flex;
@@ -40,7 +42,7 @@
     /* font-weight: 600; */
     display: flex;
     column-gap: 5px;
-    /* font-size: 16px; */
+    font-size: 16px;
     /* border: 1px solid black; */
 }
 .country-others-text{
