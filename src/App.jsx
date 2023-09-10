@@ -1,8 +1,8 @@
-import React from 'react'
-import './App.css'
-import './reset.css'
-import Header from './components/header.jsx'
-import Content from './components/content.jsx'
+import React from "react";
+import "./App.css";
+import "./reset.css";
+import Header from "./components/header.jsx";
+import Content from "./components/content.jsx";
 function App() {
   return (
     // <body>
@@ -11,6 +11,6 @@ function App() {
       <Content />
     </>
     // </body>
-  )
+  );
 }
-export default App
+export default App;

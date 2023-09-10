@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import "./navigation.css";
+import img from "../assets/sort_icon.png";
 function Navigation(props) {
-  // const [region, setRegion] = useState('Region');
-  const { region, setRegion, setSearch, setSubRegion, data } = props;
+  const {
+    region,
+    setRegion,
+    setSearch,
+    setSubRegion,
+    setSortValue,
+    data,
+    isascending,
+    setIsAscending,
+  } = props;
   function handleSubRegionChange(event) {
     setSubRegion(event.target.value);
   }
@@ -13,7 +22,10 @@ function Navigation(props) {
     setSearch(event.target.value);
   }
   function handleSortChange(event) {
-    console.log(event.target.value);
+    setSortValue(event.target.value);
+  }
+  function handleSortOrder(event) {
+    setIsAscending(!isascending);
   }
   const subregions = data.reduce((acc, country) => {
     if (region != "") {
@@ -29,7 +41,6 @@ function Navigation(props) {
     }
     return acc;
   }, {});
-  // console.log(subregions[region]);
 
   const Dispsubregions = () => {
     return subregions[region] != undefined && subregions[region].length != 0 ? (
@@ -40,7 +51,6 @@ function Navigation(props) {
       </>
     ) : null;
   };
-  // console.log(Dispsubregions);
   return (
     <div className="navigation">
       <div className="search">
@@ -55,26 +65,14 @@ function Navigation(props) {
         />
       </div>
       <div className="filter">
-        <div className="dropdowns">
+        <div className="dropdowns" id="region-dropdown">
           <select
-            name="subregions"
-            id="subRegionsId"
-            onChange={handleSubRegionChange}
+            name="regions"
+            id="regionsId"
+            className="dropdown-selects"
+            onChange={handleRegionChange}
           >
-            {/* <nav className='regionsDropDown'> */}
-            <option value="" id="filterbyregion">
-              Filter by SubRegion
-            </option>
-            <Dispsubregions />
-            {/* {region != "" ? <Dispsubregions /> : null} */}
-            {/* </nav> */}
-          </select>
-          {/* {console.log(region)} */}
-        </div>
-        <div className="dropdowns">
-          <select name="regions" id="regionsId" onChange={handleRegionChange}>
-            {/* <nav className='regionsDropDown'> */}
-            <option value="" id="filterbyregion">
+            <option value="0" className="dropdown-header" id="region-id">
               Filter by Region
             </option>
             <option value="Africa" id="africa">
@@ -92,15 +90,37 @@ function Navigation(props) {
             <option value="Oceania" id="Oceania">
               Oceania
             </option>
-            {/* </nav> */}
           </select>
-          {/* {console.log(region)} */}
         </div>
-        <div className="dropdowns">
-          <select name="sort" id="sortId" onChange={handleSortChange}>
-            <option>Sort by Population</option>
-            <option>Sort by Area</option>
+        <div className="dropdowns" id="subregion-dropdown">
+          <select
+            name="subregions"
+            id="subRegionsId"
+            className="dropdown-selects"
+            onChange={handleSubRegionChange}
+          >
+            <option value="0" className="dropdown-header" id="subregion-id">
+              Filter by SubRegion
+            </option>
+            <Dispsubregions />
           </select>
+        </div>
+        <div className="dropdowns sort-dropdown">
+          <select
+            name="sort"
+            id="sortId"
+            className="dropdown-selects"
+            onChange={handleSortChange}
+          >
+            <option value="0" className="dropdown-header">
+              Sort By
+            </option>
+            <option>Population</option>
+            <option>Area</option>
+          </select>
+          <button className="sort-icon" onClick={handleSortOrder}>
+            <img src={img} alt="sort_icon" />
+          </button>
         </div>
       </div>
     </div>

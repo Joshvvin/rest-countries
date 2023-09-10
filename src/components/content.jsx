@@ -8,7 +8,7 @@ function Content() {
   const [subregion, setSubRegion] = useState("");
   const [sortValue, setSortValue] = useState("");
   const [data, setData] = useState([]);
-
+  const [isascending, setIsAscending] = useState(true);
   //   const [subregions, setSubregions] = useState("");
   return (
     <div className="content">
@@ -18,7 +18,10 @@ function Content() {
           setRegion={setRegion}
           setSearch={setSearch}
           setSubRegion={setSubRegion}
+          setSortValue={setSortValue}
           data={data}
+          isascending={isascending}
+          setIsAscending={setIsAscending}
           //   subregions={subregions}
         />
         <Items
@@ -26,8 +29,10 @@ function Content() {
           search={search}
           subregion={subregion}
           setSubRegion={setSubRegion}
+          sortValue={sortValue}
           data={data}
           setData={setData}
+          isascending={isascending}
         />
       </div>
     </div>

@@ -6,8 +6,8 @@
   display: flex;
   overflow: scroll;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
-  column-gap: 108px;
+  justify-content: space-between;
+  /* column-gap: 108px; */
   align-items: space-between;
   row-gap: 60px;
 }
@@ -21,4 +21,9 @@
   align-self: start;
   margin-left: 45%;
   margin-top: 5%;
+}
+@media (max-width: 600px) {
+  .items-container {
+    justify-content: center;
+  }
 }
