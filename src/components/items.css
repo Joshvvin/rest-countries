@@ -20,7 +20,7 @@
   flex-basis: 40%;
   align-self: start;
   margin-left: 45%;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 @media (max-width: 600px) {
   .items-container {

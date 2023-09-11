@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./items.css";
 import CountryCard from "./countrycard";
 import Loader from "./loader";
 import ErrorState from "./errorstate";
+import { ModeContext } from "../ModeContext";
+
 function Items(props) {
+  const mode = useContext(ModeContext);
   const {
     region,
     search,
@@ -51,49 +54,23 @@ function Items(props) {
   }
   const searchFilteredCountries = searchFilter(subregionFilteredCountries);
 
-  // function sortCountries(data) {
-  //   const res = data.sort((countryA, countryB) =>
-  //     sortValue === "Population"
-  //       ? countryA.population < countryB.population
-  //         ? isascending
-  //           ? -1
-  //           : 1
-  //         : isascending
-  //         ? 1
-  //         : -1
-  //       : sortValue === "Area"
-  //       ? countryA.area < countryB.area
-  //         ? isascending
-  //           ? -1
-  //           : 1
-  //         : isascending
-  //         ? 1
-  //         : -1
-  //       : null
-  //   );
-  //   // console.log(res);
-  //   return res;
-  // }
-  // const sortedCountries = sortCountries(searchFilteredCountries);
-  // // sortCountries = sortCountries(searchFilteredCountries);
-  // function renderCountries(data) {
-  //   return data.map((country) => (
-  //     <CountryCard
-  //       key={country.name.common}
-  //       name={country.name.common}
-  //       population={country.population}
-  //       region={country.region}
-  //       capital={country.capital}
-  //       flags={country.flags}
-  //       area={country.area}
-  //     />
-  //   ));
-  // }
-  // const RenderedCountries = renderCountries(sortCountries);
   return (
-    <div className="items-container">
-      {
-        error != "" ? (
+    <ModeContext.Provider value={mode}>
+      <div
+        className="items-container"
+        // style={
+        //   mode
+        //     ? {
+        //         backgroundColor: "hsl(0, 0%, 100%)",
+        //         color: "hsl(207, 26%, 17%)",
+        //       }
+        //     : {
+        //         backgroundColor: "hsl(207, 26%, 17%)",
+        //         color: "hsl(0, 0%, 100%)",
+        //       }
+        // }
+      >
+        {error != "" ? (
           <div className="loadingOrFailed">
             <ErrorState errorname={error} />
           </div>
@@ -101,16 +78,7 @@ function Items(props) {
           <div className="loadingOrFailed">
             <Loader />
           </div>
-        ) : // regionFilteredCountries(data)
-        //   .filter((country) => {
-        //     return subregion != "" ? country.subregion == subregion : true;
-        //   })
-        //   .filter((country) => {
-        //     return search != ""
-        //       ? country.name.common.toLowerCase().includes(search)
-        //       : true;
-        //   })
-        searchFilteredCountries.length == 0 ? (
+        ) : searchFilteredCountries.length == 0 ? (
           <div className="loadingOrFailed">No such countries found</div>
         ) : (
           searchFilteredCountries
@@ -142,10 +110,9 @@ function Items(props) {
                 />
               );
             })
-        )
-        // <RenderedCountries />
-      }
-    </div>
+        )}
+      </div>
+    </ModeContext.Provider>
   );
 }
 export default Items;

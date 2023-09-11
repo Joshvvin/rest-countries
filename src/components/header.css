@@ -3,15 +3,14 @@
   display: flex;
   height: 8vh;
   /* width: 100vw; */
-  width: 99.9%;
+  width: 100%;
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   justify-content: center;
   align-items: center;
   /* border: 1px solid black; */
-  /* border-bottom: 2px 10px hsl(0, 0%, 52%); */
-  background-color: white;
-  /* box-shadow: 0px 10px 10px hsl(0, 0%, 52%); */
+  box-shadow: 0px 1px 2px 5px hsl(0, 2%, 12%);
+  /* border-bottom: 1px solid hsl(0, 0%, 52%); */
 }
 .header-container {
   flex-basis: 90%;
@@ -29,27 +28,39 @@
   /* border: 1px solid black; */
 }
 .header-theme {
-  flex-basis: 30%;
+  flex-basis: 10%;
   height: 40%;
   /* border: 1px solid black; */
   display: flex;
   justify-content: end;
   align-items: center;
+  column-gap: 10px;
+  background-color: transparent;
+  border: none;
+}
+.header-theme:hover {
+  cursor: pointer;
 }
 .theme-img {
-  flex-basis: 20%;
+  flex-basis: auto;
   height: 80%;
   font-size: 18px;
   font-weight: 600;
   text-align: end;
   /* border: 1px solid black; */
 }
+.theme-img img {
+  width: 30px;
+  height: 18px;
+  /* border: 1px solid black; */
+}
 .theme-text {
-  flex-basis: 70%;
+  flex-basis: auto;
   height: 80%;
   font-size: 18px;
   font-weight: 600;
   text-align: end;
+  /* border: 1px solid black; */
 }
 
 @media (max-width: 550px) {

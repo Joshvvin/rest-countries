@@ -1,21 +1,42 @@
-import React from 'react'
-import './header.css'
-function header(){
-    return (
-        <div className="header">
-            <div className="header-container">
-                <h2 className="header-heading">Where in the world?</h2>
-                <div className="header-theme">
-                    <div className="theme-img">
-                        
-                    </div>
-                    <div className="theme-text">
-                        Dark Mode
-                    </div>
-                </div>
+import React, { useContext } from "react";
+import "./header.css";
+import { ModeContext } from "../ModeContext";
+import darkimg from "../assets/dark.png";
+import whiteimg from "../assets/whitemoon.png";
+function header({ setLightMode }) {
+  const mode = useContext(ModeContext);
+  function handleModeChange(event) {
+    setLightMode(!mode);
+  }
+  //   console.log(mode);
+  return (
+    <ModeContext.Provider value={mode}>
+      <div
+        className="header"
+        style={
+          mode
+            ? {
+                backgroundColor: "hsl(0, 0%, 100%)",
+                color: "hsl(207, 26%, 17%)",
+              }
+            : {
+                backgroundColor: "hsl(209, 23%, 22%)",
+                color: "hsl(0, 0%, 100%)",
+              }
+        }
+      >
+        <div className="header-container">
+          <h2 className="header-heading">Where in the world?</h2>
+          <div className="header-theme" onClick={handleModeChange}>
+            <div className="theme-img">
+              <img src={mode ? darkimg : whiteimg} alt="dark" />
             </div>
-            {/* where in the world */}
+            <div className="theme-text">Dark Mode</div>
+          </div>
         </div>
-    )
+        {/* where in the world */}
+      </div>
+    </ModeContext.Provider>
+  );
 }
 export default header;

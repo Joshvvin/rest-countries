@@ -5,7 +5,7 @@ function Loader() {
   // console.log(name, population, capital ,region);
   return (
     <div className="loader" id="loaderId">
-      Loading...
+      {/* Loading... */}
     </div>
   );
 }
