@@ -1,11 +1,11 @@
 import React from "react";
 import "./errorstate.css";
-function ErrorState() {
+function ErrorState(props) {
   //   const { name, population, region, capital, flags, area } = props;
   // console.log(name, population, capital ,region);
   return (
     <div className="errorState" id="errorStateId">
-      Failed to fetch data
+      {props.errorname}
     </div>
   );
 }

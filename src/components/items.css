@@ -9,7 +9,7 @@
   justify-content: space-between;
   /* column-gap: 108px; */
   align-items: space-between;
-  row-gap: 60px;
+  row-gap: 70px;
 }
 .items-container::-webkit-scrollbar {
   display: none;

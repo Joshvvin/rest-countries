@@ -11,11 +11,14 @@ function Navigation(props) {
     data,
     isascending,
     setIsAscending,
+    subRegion,
   } = props;
   function handleSubRegionChange(event) {
+    console.log(event.target.value);
     setSubRegion(event.target.value);
   }
   function handleRegionChange(event) {
+    setSubRegion("");
     setRegion(event.target.value);
   }
   function handleSearch(event) {
@@ -46,7 +49,13 @@ function Navigation(props) {
     return subregions[region] != undefined && subregions[region].length != 0 ? (
       <>
         {subregions[region].map((subregion, index) => (
-          <option key={index}>{subregion}</option>
+          <option
+            selected={subRegion == subregion}
+            value={subregion}
+            key={subregion}
+          >
+            {subregion}
+          </option>
         ))}
       </>
     ) : null;
@@ -72,7 +81,12 @@ function Navigation(props) {
             className="dropdown-selects"
             onChange={handleRegionChange}
           >
-            <option value="0" className="dropdown-header" id="region-id">
+            <option
+              value="default"
+              className="dropdown-header"
+              id="region-id"
+              hidden
+            >
               Filter by Region
             </option>
             <option value="Africa" id="africa">
@@ -99,7 +113,13 @@ function Navigation(props) {
             className="dropdown-selects"
             onChange={handleSubRegionChange}
           >
-            <option value="0" className="dropdown-header" id="subregion-id">
+            <option
+              selected={subRegion == ""}
+              value="default"
+              className="dropdown-header"
+              id="subregion-id"
+              hidden
+            >
               Filter by SubRegion
             </option>
             <Dispsubregions />
@@ -112,7 +132,7 @@ function Navigation(props) {
             className="dropdown-selects"
             onChange={handleSortChange}
           >
-            <option value="0" className="dropdown-header">
+            <option value="default" className="dropdown-header" hidden>
               Sort By
             </option>
             <option>Population</option>

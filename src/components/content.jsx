@@ -5,7 +5,7 @@ import Items from "./items";
 function Content() {
   const [region, setRegion] = useState("");
   const [search, setSearch] = useState("");
-  const [subregion, setSubRegion] = useState("");
+  const [subRegion, setSubRegion] = useState("");
   const [sortValue, setSortValue] = useState("");
   const [data, setData] = useState([]);
   const [isascending, setIsAscending] = useState(true);
@@ -22,12 +22,14 @@ function Content() {
           data={data}
           isascending={isascending}
           setIsAscending={setIsAscending}
+          subRegion={subRegion}
+
           //   subregions={subregions}
         />
         <Items
           region={region}
           search={search}
-          subregion={subregion}
+          subRegion={subRegion}
           setSubRegion={setSubRegion}
           sortValue={sortValue}
           data={data}

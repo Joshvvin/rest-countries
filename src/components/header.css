@@ -64,11 +64,11 @@
   }
   .header-heading {
     /* border: 1px solid black; */
-    flex-basis: 65%;
+    flex-basis: 55%;
     font-size: 22px;
   }
   .header-theme {
-    flex-basis: 25%;
+    flex-basis: 35%;
     /* border: 1px solid black; */
   }
   .header-theme div {
@@ -76,5 +76,19 @@
   }
   .theme-text {
     font-size: 16px;
+  }
+}
+@media (max-width: 450px) {
+  .header-heading {
+    /* border: 1px solid black; */
+    flex-basis: 60%;
+    font-size: 18px;
+  }
+  .header-theme {
+    flex-basis: 35%;
+    /* border: 1px solid black; */
+  }
+  .theme-text {
+    font-size: 15px;
   }
 }
