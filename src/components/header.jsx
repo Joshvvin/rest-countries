@@ -11,20 +11,7 @@ function header({ setLightMode }) {
   //   console.log(mode);
   return (
     <ModeContext.Provider value={mode}>
-      <div
-        className="header"
-        style={
-          mode
-            ? {
-                backgroundColor: "hsl(0, 0%, 100%)",
-                color: "hsl(207, 26%, 17%)",
-              }
-            : {
-                backgroundColor: "hsl(209, 23%, 22%)",
-                color: "hsl(0, 0%, 100%)",
-              }
-        }
-      >
+      <div className={"header" + " " + (mode ? "header-light" : "header-dark")}>
         <div className="header-container">
           <h2 className="header-heading">Where in the world?</h2>
           <div className="header-theme" onClick={handleModeChange}>

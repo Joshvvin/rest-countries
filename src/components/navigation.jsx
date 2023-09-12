@@ -68,18 +68,7 @@ function Navigation(props) {
     <ModeContext.Provider value={mode}>
       <div className="navigation">
         <div
-          className="search"
-          style={
-            mode
-              ? {
-                  backgroundColor: "hsl(0, 0%, 100%)",
-                  color: " hsl(200, 15%, 8%)",
-                }
-              : {
-                  backgroundColor: "hsl(209, 23%, 22%)",
-                  color: "hsl(0, 0%, 100%)",
-                }
-          }
+          className={"search" + " " + (mode ? "search-light" : "search-dark")}
         >
           <div className="search-mark">
             <div className="search-mark-text">Q</div>
@@ -87,53 +76,25 @@ function Navigation(props) {
           <input
             type="text"
             id="search-countries"
+            className={
+              "search-countries" +
+              " " +
+              (mode ? "search-countries-light" : "search-countries-dark")
+            }
             onChange={handleSearch}
             placeholder="Search for a country..."
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
-            }
           />
         </div>
         <div className="filter">
-          {/* <div
-            className="dropdowns"
-            id="region-dropdown"
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
-            }
-          > */}
           <select
             name="regions"
             id="regionsId"
-            className="dropdown-selects"
-            onChange={handleRegionChange}
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
+            className={
+              "dropdown-selects" +
+              " " +
+              (mode ? "dropdown-selects-light" : "dropdown-selects-dark")
             }
+            onChange={handleRegionChange}
           >
             <option
               value="default"
@@ -159,38 +120,15 @@ function Navigation(props) {
               Oceania
             </option>
           </select>
-          {/* </div> */}
-          {/* <div
-            className="dropdowns"
-            id="subregion-dropdown"
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
-            }
-          > */}
           <select
             name="subregions"
             id="subRegionsId"
-            className="dropdown-selects"
-            onChange={handleSubRegionChange}
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
+            className={
+              "dropdown-selects" +
+              " " +
+              (mode ? "dropdown-selects-light" : "dropdown-selects-dark")
             }
+            onChange={handleSubRegionChange}
           >
             <option
               selected={subRegion == ""}
@@ -203,37 +141,15 @@ function Navigation(props) {
             </option>
             <Dispsubregions />
           </select>
-          {/* </div> */}
-          {/* <div
-            className="dropdowns sort-dropdown"
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
-            }
-          > */}
           <select
             name="sort"
             id="sortId"
-            className="dropdown-selects"
-            onChange={handleSortChange}
-            style={
-              mode
-                ? {
-                    backgroundColor: "hsl(0, 0%, 100%)",
-                    color: " hsl(200, 15%, 8%)",
-                  }
-                : {
-                    backgroundColor: "hsl(209, 23%, 22%)",
-                    color: "hsl(0, 0%, 100%)",
-                  }
+            className={
+              "dropdown-selects" +
+              " " +
+              (mode ? "dropdown-selects-light" : "dropdown-selects-dark")
             }
+            onChange={handleSortChange}
           >
             <option value="default" className="dropdown-header" hidden>
               Sort By
@@ -244,7 +160,6 @@ function Navigation(props) {
           <button className="sort-icon" onClick={handleSortOrder}>
             <img src={img} alt="sort_icon" />
           </button>
-          {/* </div> */}
         </div>
       </div>
     </ModeContext.Provider>

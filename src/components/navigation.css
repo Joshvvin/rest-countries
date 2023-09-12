@@ -17,6 +17,14 @@
   box-shadow: 0px 1px 2px hsl(0, 0%, 52%);
   align-items: center;
 }
+.search-light {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+}
+.search-dark {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
 .search-mark {
   flex-basis: 10%;
   height: 60%;
@@ -33,13 +41,19 @@
   /* background-color: none; */
   /* border: 1px solid black; */
 }
-#search-countries {
+.search-countries {
   flex-basis: 85%;
   height: 60%;
   font-size: 15px;
   border: none;
-  /* padding-left: 10px; */
-  /* border: 1px solid black; */
+}
+.search-countries-light {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+}
+.search-countries-dark {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
 }
 .filter {
   flex-basis: 55%;
@@ -52,33 +66,10 @@
   /* background-color: white; */
   /* box-shadow: 0px 1px 2px hsl(0, 0%, 52%); */
 }
-/* .dropdowns {
-  flex-basis: 30%;
-  height: 100%;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 8px;
-  align-items: center;
-  background-color: white;
-  box-shadow: 0px 1px 2px hsl(0, 0%, 52%);
-  padding-right: 15px;
-  padding-left: 15px;
-} */
-/* #region-dropdown {
-  flex-basis: 20%;
-  border: 1px solid black;
-} */
 #subRegionsId {
   /* border: 1px solid black; */
   flex-basis: 25%;
 }
-/* #subregion-dropdown {
-  flex-basis: 30%;
-} */
-/* .dropdowns:hover {
-  cursor: pointer;
-} */
 .filter-text {
   flex-basis: 55%;
   height: 50%;
@@ -102,12 +93,17 @@
   background-color: transparent;
   border-radius: 5px;
   box-shadow: 0px 1px 2px hsl(0, 0%, 52%);
-  appearance: none;
-  /* /* padding-left: 10px; */
   padding-left: 20px;
-  /* padding-right: -30px; */
-  /* background-color: white; */
-  /* box-shadow: 0px 1px 2px hsl(0, 0%, 52%); */
+}
+.dropdown-selects-light {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+  border-right: 20px solid hsl(0, 0%, 100%);
+}
+.dropdown-selects-dark {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+  border-right: 20px solid hsl(209, 23%, 22%);
 }
 .dropdown-selects:hover {
   cursor: pointer;

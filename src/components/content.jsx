@@ -16,18 +16,7 @@ function Content() {
   return (
     <ModeContext.Provider value={mode}>
       <div
-        className="content"
-        style={
-          mode
-            ? {
-                backgroundColor: "hsl(0, 0%, 98%)",
-                color: "hsl(207, 26%, 17%)",
-              }
-            : {
-                backgroundColor: "hsl(207, 26%, 17%)",
-                color: "hsl(0, 0%, 98%)",
-              }
-        }
+        className={"content" + " " + (mode ? "content-light" : "content-dark")}
       >
         <div className="content-container">
           <Navigation

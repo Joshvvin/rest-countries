@@ -56,20 +56,7 @@ function Items(props) {
 
   return (
     <ModeContext.Provider value={mode}>
-      <div
-        className="items-container"
-        // style={
-        //   mode
-        //     ? {
-        //         backgroundColor: "hsl(0, 0%, 100%)",
-        //         color: "hsl(207, 26%, 17%)",
-        //       }
-        //     : {
-        //         backgroundColor: "hsl(207, 26%, 17%)",
-        //         color: "hsl(0, 0%, 100%)",
-        //       }
-        // }
-      >
+      <div className="items-container">
         {error != "" ? (
           <div className="loadingOrFailed">
             <ErrorState errorname={error} />
