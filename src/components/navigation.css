@@ -110,15 +110,26 @@
 }
 .sort-icon {
   flex-basis: 3%;
-  height: 70%;
+  height: 100%;
   border: none;
-  background-color: transparent;
+  /* background-color: white; */
   /* border: 1px solid black; */
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px hsl(0, 0%, 52%);
+
   /* align-self: start; */
   /* justify-self: start; */
   justify-content: end;
+}
+.sort-icon-light {
+  background-color: hsl(0, 0%, 100%);
+  /* color: hsl(200, 15%, 8%); */
+}
+.sort-icon-dark {
+  background-color: hsl(209, 23%, 22%);
+  /* color: hsl(0, 0%, 100%); */
 }
 .sort-icon:hover {
   cursor: pointer;
@@ -128,13 +139,6 @@
   width: 40px;
   /* border: 1px solid black; */
 }
-/* .sort-dropdown {
-  flex-basis: 20%;
-  display: flex;
-  column-gap: 10px;
-  justify-content: center;
-  border: 1px solid black;
-} */
 #sortId {
   /* border: 1px solid black; */
   flex-basis: 25%;

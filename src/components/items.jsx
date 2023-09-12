@@ -85,6 +85,7 @@ function Items(props) {
               }
             })
             .map((country) => {
+              // console.log(country);
               return (
                 <CountryCard
                   key={country.name.common}
@@ -94,6 +95,7 @@ function Items(props) {
                   capital={country.capital}
                   flags={country.flags}
                   area={country.area}
+                  id={country.idd.root}
                 />
               );
             })

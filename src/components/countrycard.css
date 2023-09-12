@@ -1,4 +1,4 @@
-.country {
+.country-card {
   flex-basis: 21%;
   height: 50%;
   /* border: 1px solid black; */
@@ -6,15 +6,18 @@
   flex-wrap: wrap;
   justify-content: center;
   border-radius: 5px;
-
+  text-decoration: none;
   /* background-color: white; */
   box-shadow: 0px 1px 5px hsl(0, 0%, 52%);
 }
-.country-light {
+.country-card:hover {
+  cursor: pointer;
+}
+.country-card-light {
   background-color: hsl(0, 0%, 100%);
   color: hsl(207, 26%, 17%);
 }
-.country-dark {
+.country-card-dark {
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
 }
@@ -57,22 +60,22 @@
   font-weight: 600;
 }
 @media (max-width: 1100px) {
-  .country {
+  .country-card {
     flex-basis: 28%;
   }
 }
 @media (max-width: 850px) {
-  .country {
+  .country-card {
     flex-basis: 40%;
   }
 }
 @media (max-width: 600px) {
-  .country {
+  .country-card {
     flex-basis: 65%;
   }
 }
 @media (max-width: 500px) {
-  .country {
+  .country-card {
     flex-basis: 70%;
   }
 }

@@ -18,7 +18,7 @@ function Navigation(props) {
   const mode = useContext(ModeContext);
 
   function handleSubRegionChange(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setSubRegion(event.target.value);
   }
   function handleRegionChange(event) {
@@ -137,7 +137,7 @@ function Navigation(props) {
               id="subregion-id"
               hidden
             >
-              Filter by SubRegion
+              Filter by Sub Region
             </option>
             <Dispsubregions />
           </select>
@@ -157,7 +157,12 @@ function Navigation(props) {
             <option>Population</option>
             <option>Area</option>
           </select>
-          <button className="sort-icon" onClick={handleSortOrder}>
+          <button
+            className={
+              "sort-icon" + " " + (mode ? "sort-icon-light" : "sort-icon-dark")
+            }
+            onClick={handleSortOrder}
+          >
             <img src={img} alt="sort_icon" />
           </button>
         </div>
