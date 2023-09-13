@@ -9,13 +9,13 @@ function CountryCard(props) {
   return (
     <ModeContext.Provider value={mode}>
       <NavLink
-        to={"/country/" + name}
+        to={"/country/" + id}
         className={
           "country-card" +
           " " +
           (mode ? "country-card-light" : "country-card-dark")
         }
-        id={name}
+        id={id}
         onClick={handleCountryClick}
       >
         <div className="country-image">

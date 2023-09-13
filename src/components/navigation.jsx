@@ -163,7 +163,15 @@ function Navigation(props) {
             }
             onClick={handleSortOrder}
           >
-            <img src={img} alt="sort_icon" />
+            <img
+              className={
+                "sort-button" +
+                " " +
+                (mode ? "sort-button-light" : "sort-button-dark")
+              }
+              src={img}
+              alt="sort_icon"
+            />
           </button>
         </div>
       </div>

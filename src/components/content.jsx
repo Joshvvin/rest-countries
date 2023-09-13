@@ -3,7 +3,8 @@ import "./content.css";
 import Navigation from "./navigation";
 import Items from "./items";
 import { ModeContext } from "../ModeContext";
-function Content() {
+function Content(props) {
+  const { setAbbreviation } = props;
   const [region, setRegion] = useState("");
   const [search, setSearch] = useState("");
   const [subRegion, setSubRegion] = useState("");
@@ -41,6 +42,7 @@ function Content() {
             data={data}
             setData={setData}
             isascending={isascending}
+            setAbbreviation={setAbbreviation}
           />
         </div>
       </div>

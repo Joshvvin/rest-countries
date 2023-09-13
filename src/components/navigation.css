@@ -24,6 +24,7 @@
 .search-dark {
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
+  box-shadow: none;
 }
 .search-mark {
   flex-basis: 10%;
@@ -66,10 +67,6 @@
   /* background-color: white; */
   /* box-shadow: 0px 1px 2px hsl(0, 0%, 52%); */
 }
-#subRegionsId {
-  /* border: 1px solid black; */
-  flex-basis: 25%;
-}
 .filter-text {
   flex-basis: 55%;
   height: 50%;
@@ -104,6 +101,7 @@
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
   border-right: 20px solid hsl(209, 23%, 22%);
+  box-shadow: none;
 }
 .dropdown-selects:hover {
   cursor: pointer;
@@ -130,14 +128,18 @@
 .sort-icon-dark {
   background-color: hsl(209, 23%, 22%);
   /* color: hsl(0, 0%, 100%); */
+  box-shadow: none;
 }
 .sort-icon:hover {
   cursor: pointer;
 }
-.sort-icon img {
+.sort-button {
   height: 30px;
   width: 40px;
   /* border: 1px solid black; */
+}
+.sort-button-dark {
+  filter: invert();
 }
 #sortId {
   /* border: 1px solid black; */
@@ -160,7 +162,7 @@
     flex-basis: 40%;
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .navigation {
     height: 20%;
     flex-wrap: wrap;
@@ -178,16 +180,12 @@
   }
   #sortId {
     /* border: 1px solid black; */
-    flex-basis: 70%;
+    flex-basis: 20%;
   }
   .sort-icon {
-    flex-basis: 20%;
+    flex-basis: 5%;
     height: 80%;
     /* border: 1px solid black; */
-  }
-  .dropdowns {
-    /* flex-basis: 65%; */
-    /* font-size: 14px; */
   }
 }
 
@@ -206,32 +204,20 @@
     /* border: 1px solid black; */
     align-content: space-between;
   }
-  #region-dropdown,
-  #subregion-dropdown {
-    flex-basis: 40%;
-    height: 40%;
-    /* border: 1px solid black; */
-  }
-  .sort-dropdown {
-    flex-basis: 100%;
+  .dropdown-selects {
+    flex-basis: 45%;
     height: 40%;
   }
   .sort-icon {
     /* border: 1px solid black; */
     flex-basis: 8%;
-    height: 80%;
+    height: 40%;
   }
   #sortId {
     flex-basis: 81%;
   }
 }
 @media (max-width: 600px) {
-  #subregion-dropdown {
-    flex-basis: 40%;
-  }
-  #region-dropdown {
-    flex-basis: 40%;
-  }
   .search-mark {
     flex-basis: 15%;
   }
@@ -243,10 +229,15 @@
   .search-mark {
     flex-basis: 20%;
   }
-  #subregion-dropdown,
-  #region-dropdown {
-    flex-basis: 35%;
-    padding-left: 5px;
-    padding-right: 5px;
+  .dropdown-selects {
+    flex-basis: 40%;
+    font-size: 14px;
+    padding-left: 10px;
+  }
+  .dropdown-selects-light {
+    border-right: 10px solid hsl(0, 0%, 100%);
+  }
+  .dropdown-selects-dark {
+    border-right: 10px solid hsl(209, 23%, 22%);
   }
 }

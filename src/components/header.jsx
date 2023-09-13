@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import "./header.css";
 import { ModeContext } from "../ModeContext";
-import lightimg from "../assets/lightmoon.png";
-import darkimg from "../assets/moon.jpg";
+import darkimg from "../assets/crescent-moon.svg";
 function header({ setLightMode }) {
   const mode = useContext(ModeContext);
   function handleModeChange(event) {
@@ -16,7 +15,11 @@ function header({ setLightMode }) {
           <h2 className="header-heading">Where in the world?</h2>
           <div className="header-theme" onClick={handleModeChange}>
             <div className="theme-img">
-              <img src={mode ? lightimg : darkimg} alt="dark" />
+              <img
+                className={mode ? "moon-light" : "moon-dark"}
+                src={darkimg}
+                alt="dark"
+              />
             </div>
             <div className="theme-text">
               {mode ? "Dark Mode" : "Light Mode"}

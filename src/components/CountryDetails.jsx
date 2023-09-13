@@ -4,15 +4,19 @@ import ErrorState from "./errorstate";
 import Loader from "./loader";
 import "./CountryDetails.css";
 import { ModeContext } from "../ModeContext";
-import backarrow from "../assets/arrow-left-55.png";
-export default function CountryDetails() {
+import arrow from "../assets/arrow.svg";
+import CountryBorders from "./CountryBorders";
+// import earrow from "../assets/whitearrow.png";
+export default function CountryDetails(props) {
+  const { abbreviation } = props;
   const { id } = useParams();
   const [datafailed, setDataFailed] = useState("");
   const [loading, setLoading] = useState(true);
   const mode = useContext(ModeContext);
   //   console.log(id);
   const [country, setCountry] = useState("");
-  const url = "https://restcountries.com/v3.1/name/" + id;
+  const baseurl = "https://restcountries.com/v3.1/alpha?codes=";
+  const url = baseurl + id;
   //   console.log(typeof url);
   useEffect(() => {
     fetch(url)
@@ -29,17 +33,10 @@ export default function CountryDetails() {
         setCountry(data[0]);
       })
       .catch((err) => {
-        setDataFailed(err.name);
+        setDataFailed(err.message);
       });
   }, []);
-  //
-  //   console.log(country.name.nativeName);
-  //   const nativeName = Object.values(country.name.nativeName).find((value) => {
-  //     return true;
-  //   });
-  //   console.log(nativeName);
-  //   console.log(country);
-  //   console.log(mode);
+  // console.log(country);
   return (
     <ModeContext.Provider value={mode}>
       <div
@@ -56,9 +53,20 @@ export default function CountryDetails() {
         ) : (
           <>
             <div className="button-container">
-              <NavLink to="/" className="back-to-home">
+              <NavLink
+                to="/"
+                className={
+                  "back-to-home" +
+                  " " +
+                  (mode ? "back-to-home-light" : "back-to-home-dark")
+                }
+              >
                 <div className="back-arrow">
-                  <img src={backarrow} alt="back-arrow" />
+                  <img
+                    className={mode ? "arrow-light" : "arrow-dark"}
+                    src={arrow}
+                    alt="back-arrow"
+                  />
                 </div>
                 <div
                   className={
@@ -86,7 +94,11 @@ export default function CountryDetails() {
                       {
                         country.name.nativeName[
                           Object.keys(country.name.nativeName).find(
-                            (value) => true
+                            (value, index) =>
+                              index ==
+                              Object.keys(country.name.nativeName).length - 1
+                                ? true
+                                : false
                           )
                         ].common
                       }
@@ -103,9 +115,9 @@ export default function CountryDetails() {
                   <div className="country-currencies country-subdetails">
                     <div className="subdetails-heading">Currencies:</div>
                     <div className="subdetails-value">
-                      {Object.keys(country.currencies).map(
-                        (curr) => curr + ","
-                      )}
+                      {Object.keys(country.currencies)
+                        .map((curr) => curr)
+                        .join(",")}
                     </div>
                   </div>
                   <div className="country-reg country-subdetails">
@@ -115,9 +127,9 @@ export default function CountryDetails() {
                   <div className="country-languages country-subdetails">
                     <div className="subdetails-heading">Languages:</div>
                     <div className="subdetails-value">
-                      {Object.values(country.languages).map(
-                        (lang) => lang + ","
-                      )}
+                      {Object.values(country.languages)
+                        .map((lang) => lang)
+                        .join(",")}
                     </div>
                   </div>
                   <div className="country-subregs country-subdetails subregion-subdetails">
@@ -131,13 +143,15 @@ export default function CountryDetails() {
                 </div>
                 {country.borders != undefined ? (
                   <div className="country-border-details">
-                    <div className="country-border-text">Border Countries:</div>
+                    <div className="country-border-text subdetails-heading">
+                      Border Countries:
+                    </div>
                     <div className="country-border-values">
                       {
-                        // country.borders != undefined
-                        //   ?
                         country.borders.map((border) => (
-                          <div className="country-borders">{border}</div>
+                          <CountryBorders>
+                            {abbreviation[border].name}
+                          </CountryBorders>
                         ))
                         // : null
                       }

@@ -16,10 +16,12 @@ function Items(props) {
     data,
     setData,
     isascending,
+    setAbbreviation,
   } = props;
   const url = "https://restcountries.com/v3.1/all";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  let abbreviations = {};
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -30,6 +32,17 @@ function Items(props) {
         }
       })
       .then((response) => {
+        // const abbList = [];
+        response.forEach((country) => {
+          // console.log(country);
+          const obj = { abbreviation: country.cca3, name: country.name.common };
+          // setAbbreviations
+          abbreviations[country.cca3] = obj;
+          // abbList.push(obj);
+        });
+        setAbbreviation(abbreviations);
+        // console.log(abbList.length);
+        // console.log(abbreviations);
         setData(response);
         setLoading(false);
       })
@@ -86,6 +99,7 @@ function Items(props) {
             })
             .map((country) => {
               // console.log(country);
+
               return (
                 <CountryCard
                   key={country.name.common}
@@ -95,7 +109,7 @@ function Items(props) {
                   capital={country.capital}
                   flags={country.flags}
                   area={country.area}
-                  id={country.idd.root}
+                  id={country.ccn3}
                 />
               );
             })
